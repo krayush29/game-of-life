@@ -72,21 +72,7 @@ public class Grid {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
                 int aliveNeighbours = countLiveNeighbours(row, col);
-                if (cells[row][col].isAlive()) {
-                    if (aliveNeighbours < 2) {
-                        nextGeneration[row][col] = new Cell(false);
-                    } else if (aliveNeighbours == 2 || aliveNeighbours == 3) {
-                        nextGeneration[row][col] = new Cell(true);
-                    } else {
-                        nextGeneration[row][col] = new Cell(false);
-                    }
-                } else {
-                    if (aliveNeighbours == 3) {
-                        nextGeneration[row][col] = new Cell(true);
-                    } else {
-                        nextGeneration[row][col] = new Cell(false);
-                    }
-                }
+                nextGeneration[row][col] = cells[row][col].nextState(aliveNeighbours);
             }
         }
 

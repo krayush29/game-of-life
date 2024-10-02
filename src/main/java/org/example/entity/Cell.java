@@ -18,4 +18,12 @@ public class Cell {
     public void setDead() {
         this.isAlive = false;
     }
+
+    public Cell nextState(int aliveNeighbours) {
+        if (this.isAlive) {
+            return (aliveNeighbours < 2 || aliveNeighbours > 3) ? new Cell(false) : new Cell(true);
+        } else {
+            return (aliveNeighbours == 3) ? new Cell(true) : new Cell(false);
+        }
+    }
 }
