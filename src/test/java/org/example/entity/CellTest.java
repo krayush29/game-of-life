@@ -2,6 +2,7 @@ package org.example.entity;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,5 +49,23 @@ class CellTest {
 
         assertFalse(nextStateWithTwoNeighbours.isAlive());
         assertFalse(nextStateWithFourNeighbours.isAlive());
+    }
+
+    // How one cell will aware of its neighbours?
+    @Test
+    public void testCountLiveNeighboursCell() {
+        Grid inputGrid = new Grid(4, 4);
+        int[][] inputMatrix = new int[][]{
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {1, 1, 0, 0},
+                {0, 0, 1, 0}
+        };
+
+        inputGrid.serialize(inputMatrix);
+
+        Cell cell = inputGrid.getLocations()[1][2].getCell();
+        Integer liveNeighbour = cell.countAliveNeighbours();
+        assertEquals(2, liveNeighbour);
     }
 }

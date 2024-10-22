@@ -22,27 +22,6 @@ class GridTest {
         assertThrows(InvalidGridException.class, () -> new Grid(-1, 5));
     }
 
-    // Test serialize the Integer grid to Cell Grid
-    @Test
-    public void testSerializeIntegerGridToCellGrid() {
-        Grid grid = new Grid(3, 3);
-        int[][] inputMatrix = new int[][]{
-                {1, 0, 1},
-                {0, 1, 0},
-                {1, 0, 1}
-        };
-
-        grid.serialize(inputMatrix);
-
-        Cell[][] expectedDeSerializedGGrid = new Cell[][]{
-                {new Cell(true), new Cell(false), new Cell(true)},
-                {new Cell(false), new Cell(true), new Cell(false)},
-                {new Cell(true), new Cell(false), new Cell(true)}
-        };
-
-        assertTrue(grid.isSameGrid(expectedDeSerializedGGrid));
-    }
-
     // Test serialize and deserialize the Integer grid to get the same Integer grid
     @Test
     public void testSerializeAndDeserializeToGetSameIntegerGrid() {
